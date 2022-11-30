@@ -1,0 +1,17 @@
+<div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <label for="course">product</label>
+    <br />
+    <input
+      (click)="toggleMessage()"
+      id="course"
+      type="text"
+      ngModel
+      name="name"
+      autocomplete="off"
+    />
+    <br />
+    <input type="submit" value="SUBMIT" />
+  </form>
+  <h3 *ngIf="message">topic added successfuly</h3>
+</div>

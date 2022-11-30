@@ -1,0 +1,32 @@
+<div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <label for="topic">topic</label>
+    <br />
+    <input
+      (click)="toggleMessage()"
+      id="topic"
+      list="topics"
+      ngModel
+      name="topic"
+      autocomplete="off"
+      placeholder="select topic"
+    />
+    <datalist id="topics">
+      <option *ngFor="let topic of data.topics">{{ topic.name }}</option>
+    </datalist>
+
+    <br />
+    <label for="question">question</label>
+    <br />
+    <textarea
+      id="question"
+      type="text"
+      ngModel
+      name="question"
+      autocomplete="off"
+    ></textarea>
+    <br />
+    <input type="submit" value="SUBMIT" />
+  </form>
+  <h3 *ngIf="message">topic added successfully</h3>
+</div>

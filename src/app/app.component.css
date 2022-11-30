@@ -1,0 +1,35 @@
+header {
+  background-color: rgb(177, 189, 189);
+  height: 20vh;
+}
+.logocolor {
+  height: 5vh;
+  background-color: lightpink;
+}
+header h3,
+header h4 {
+  text-align: center;
+}
+.logo h3 {
+  height: 100%;
+  font-size: 50px;
+}
+header .logo {
+  height: 10vh;
+}
+nav ul {
+  height: 4vh;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.apps {
+  min-height: 80vh;
+  background-color: burlywood;
+}

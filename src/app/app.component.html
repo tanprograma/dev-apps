@@ -1,0 +1,27 @@
+<div class="home">
+  <header>
+    <div class="logocolor">
+      <h4>"...meant to speed up development and testing</h4>
+    </div>
+    <div class="logo">
+      <h3>DEV-APPS</h3>
+    </div>
+
+    <div class="logocolor nav">
+      <nav>
+        <ul>
+          <li (click)="toggleView('tandbs')">TANDBS</li>
+          <li>PHARMAFY</li>
+          <li>XCELL</li>
+          <li>CETAMOL</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+<div class="apps">
+  <div *ngIf="view == 'onboard'">
+    <p>please click the nav to toggle the view</p>
+  </div>
+  <app-tandbs-app *ngIf="view == viewToggled"></app-tandbs-app>
+</div>
