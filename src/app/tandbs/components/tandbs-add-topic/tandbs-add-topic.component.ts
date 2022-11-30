@@ -23,7 +23,6 @@ export class TandbsAddTopicComponent implements OnInit {
     const toAdd = {
       name: f.value.name,
       id: this.data.topics.length + 1,
-      questions: [],
     };
     f.reset();
     // with mock-database
