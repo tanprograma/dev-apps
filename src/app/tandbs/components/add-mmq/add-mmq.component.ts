@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { TandbsDataService } from '../../services/tandbs-data.service';
 import { TandbsUrlsService } from '../../services/tandbs-urls.service';
+import { NgForm } from '@angular/forms';
+import { Input } from '@angular/core';
 @Component({
-  selector: 'tandbs-add-question',
-  templateUrl: './tandbs-add-question.component.html',
-  styleUrls: ['./tandbs-add-question.component.css'],
+  selector: 'app-add-mmq',
+  templateUrl: './add-mmq.component.html',
+  styleUrls: ['./add-mmq.component.css'],
 })
-export class TandbsAddQuestionComponent implements OnInit {
+export class AddMmqComponent implements OnInit {
+  @Input() topic?: any;
+  @Input() format?: any;
+  @Input() choices?: any;
   message = false;
-  choices?: any;
+  // choices?: any;
   constructor(
     private http: HttpService,
     public data: TandbsDataService,
@@ -21,11 +25,18 @@ export class TandbsAddQuestionComponent implements OnInit {
   onSubmit(f: NgForm): void {
     console.log('submit clicked');
     if (f.value.topic == '' || f.value.question == '') return;
+    // let choices: any = [];
     const toAdd = {
       topic: f.value.topic,
       id: this.data.questions.length + 1,
       question: f.value.question,
+      type: this.format,
+      choices: this.choices.map((item: string) => {
+        return { choice: f.value[item] };
+      }),
     };
+
+    console.log(toAdd);
     f.reset();
     this.http.post(this.urls.questions, toAdd).subscribe((question) => {
       console.log(question);

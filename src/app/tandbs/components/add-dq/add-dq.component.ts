@@ -3,12 +3,15 @@ import { NgForm } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { TandbsDataService } from '../../services/tandbs-data.service';
 import { TandbsUrlsService } from '../../services/tandbs-urls.service';
+import { Input } from '@angular/core';
 @Component({
-  selector: 'tandbs-add-question',
-  templateUrl: './tandbs-add-question.component.html',
-  styleUrls: ['./tandbs-add-question.component.css'],
+  selector: 'app-add-dq',
+  templateUrl: './add-dq.component.html',
+  styleUrls: ['./add-dq.component.css'],
 })
-export class TandbsAddQuestionComponent implements OnInit {
+export class AddDqComponent implements OnInit {
+  @Input() topic?: any;
+  @Input() format?: any;
   message = false;
   choices?: any;
   constructor(
@@ -22,6 +25,7 @@ export class TandbsAddQuestionComponent implements OnInit {
     console.log('submit clicked');
     if (f.value.topic == '' || f.value.question == '') return;
     const toAdd = {
+      type: this.format,
       topic: f.value.topic,
       id: this.data.questions.length + 1,
       question: f.value.question,

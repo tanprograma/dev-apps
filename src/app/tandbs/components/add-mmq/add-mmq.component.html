@@ -6,7 +6,7 @@
       (click)="toggleMessage()"
       id="topic"
       list="topics"
-      ngModel
+      [ngModel]="topic"
       name="topic"
       autocomplete="off"
       placeholder="select topic"
@@ -22,7 +22,7 @@
       (click)="toggleMessage()"
       id="format"
       list="formats"
-      ngModel
+      [ngModel]="format"
       name="format"
       autocomplete="off"
       placeholder="select format"
@@ -35,12 +35,15 @@
     <label for="question">question</label>
     <br />
     <textarea
-      id="question"
+      *ngFor="let choice of choices"
+      id="{{ choice }}"
       type="text"
       ngModel
-      name="question"
+      name="{{ choice }}"
       autocomplete="off"
+      placeholder="enter a choice"
     ></textarea>
+
     <br />
     <input type="submit" value="SUBMIT" />
   </form>

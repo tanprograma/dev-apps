@@ -1,4 +1,71 @@
-<div>
+<div class="add-topic">
   <tandbs-add-topic></tandbs-add-topic>
-  <tandbs-add-question></tandbs-add-question>
+</div>
+<div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <label for="topic">topic</label>
+    <br />
+    <input
+      id="topic"
+      list="topics"
+      ngModel
+      name="topic"
+      autocomplete="off"
+      placeholder="select topic"
+    />
+    <datalist id="topics">
+      <option *ngFor="let topic of data.topics">{{ topic.name }}</option>
+    </datalist>
+
+    <br />
+    <label for="format">format</label>
+    <br />
+    <input
+      id="format"
+      list="formats"
+      [(ngModel)]="formatt"
+      name="format"
+      autocomplete="off"
+      placeholder="select format"
+    />
+    <datalist id="formats">
+      <option *ngFor="let format of data.formats">{{ format.format }}</option>
+    </datalist>
+
+    <br />
+    <input
+      *ngIf="formatt == 'mcq' || formatt == 'mmq'"
+      id="choices"
+      type="number"
+      ngModel
+      name="choices"
+      autocomplete="off"
+      placeholder="enter number of choices"
+    />
+    <br />
+    <input type="submit" value="SUBMIT" />
+  </form>
+
+  <app-add-mcq
+    *ngIf="'mcq' == format"
+    [format]="format"
+    [topic]="topic"
+    [choices]="choices"
+  ></app-add-mcq>
+  <app-add-mmq
+    *ngIf="'mmq' == format"
+    [format]="format"
+    [topic]="topic"
+    [choices]="choices"
+  ></app-add-mmq>
+  <app-add-tf
+    *ngIf="'tf' == format"
+    [format]="format"
+    [topic]="topic"
+  ></app-add-tf>
+  <app-add-dq
+    *ngIf="'dq' == format"
+    [format]="format"
+    [topic]="topic"
+  ></app-add-dq>
 </div>

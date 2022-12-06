@@ -6,5 +6,6 @@ import { Injectable } from '@angular/core';
 export class TandbsUrlsService {
   topics = 'http://localhost:8000/topics';
   questions = 'http://localhost:8000/questions';
+  formats = 'http://localhost:8000/formats';
   constructor() {}
 }
