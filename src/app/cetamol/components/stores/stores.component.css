@@ -1,0 +1,20 @@
+form {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: blueviolet;
+  width: 60%;
+  text-align: center;
+}
+input {
+  width: 50%;
+  height: 1.8em;
+}
+h3 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  text-align: center;
+  background-color: white;
+  color: rgb(2, 177, 2);
+  height: 3vh;
+}

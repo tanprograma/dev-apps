@@ -7,6 +7,8 @@ export class TandbsDataService {
   topics: any = [];
   questions: any = [];
   formats: any = [];
+  drugs: any = [];
+  drgclass: any = [];
 
   constructor() {}
 }

@@ -1,0 +1,43 @@
+<div>
+  <div class="nav">
+    <div class="navdiv" (click)="toggleForm()">SEARCH</div>
+    <div class="navdiv" (click)="xyz(0)">TODAY</div>
+    <div class="navdiv" (click)="xyz(7)">WEEK</div>
+    <div class="navdiv" (click)="xyz(30)">MONTH</div>
+    <div class="navdiv" (click)="xyz(180)">6 MONTH</div>
+    <div class="navdiv" (click)="xyz(365)">YEAR</div>
+  </div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="form">
+    <label for="course">product</label>
+    <br />
+    <input
+      id="date"
+      type="date"
+      [(ngModel)]="dateVar"
+      name="date"
+      autocomplete="off"
+      placeholder="select date"
+    />
+
+    <br />
+    <input type="submit" value="SUBMIT" />
+  </form>
+  <div class="table" *ngIf="numOfRecords > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>sn</th>
+          <th>medicine</th>
+          <th>quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let med of tableData">
+          <td>{{ med.sn }}</td>
+          <td>{{ med.medicine }}</td>
+          <td>{{ med.quantities }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="forms" *ngIf="pmsNotToggled">
+  <!-- <div class="heading">
+    <h4>select form</h4>
+  </div> -->
+  <div class="tandbs-btn" (click)="togglePms('medicine')">add medicine</div>
+  <div class="tandbs-btn" (click)="togglePms('dispense')">dispense</div>
+  <div class="tandbs-btn" (click)="togglePms('dispense-record')">
+    dispense records
+  </div>
+  <div class="tandbs-btn" (click)="togglePms('dispense-record')">order</div>
+  <div class="tandbs-btn" (click)="togglePms('dispense-record')">
+    order records
+  </div>
+  <!-- <div class="tandbs-btn" (click)="togglePms('migrate-record')">
+    migrate records
+  </div> -->
+</div>
+
+<div class="add-medicine" *ngIf="view == 'medicine'">
+  <app-add-medicine></app-add-medicine>
+
+  <button (click)="resetToggle()">back</button>
+</div>
+<div class="dispense" *ngIf="view == 'dispense'">
+  <app-dispense></app-dispense>
+
+  <button (click)="resetToggle()">back</button>
+</div>
+<div class="record-dispense" *ngIf="view == 'dispense-record'">
+  <button (click)="resetToggle()">back</button>
+  <app-pms-records-dispensed></app-pms-records-dispensed>
+</div>
+<!-- <div class="record-migrate" *ngIf="view == 'migrate-record'">
+  <app-pms-migrate></app-pms-migrate>
+
+  <button (click)="resetToggle()">back</button>
+</div> -->

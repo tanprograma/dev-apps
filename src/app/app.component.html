@@ -11,9 +11,9 @@
       <nav>
         <ul>
           <li (click)="toggleView('tandbs')">TANDBS</li>
-          <li>PHARMAFY</li>
+          <li (click)="toggleView('pms')">PMS</li>
           <li>XCELL</li>
-          <li>CETAMOL</li>
+          <li (click)="toggleView('cetamol')">CETAMOL</li>
         </ul>
       </nav>
     </div>
@@ -23,5 +23,7 @@
   <div *ngIf="view == 'onboard'">
     <p>please click the nav to toggle the view</p>
   </div>
-  <app-tandbs-app *ngIf="view == viewToggled"></app-tandbs-app>
+  <app-tandbs-app *ngIf="view1 == view"></app-tandbs-app>
+  <app-pms-app *ngIf="view2 == view"></app-pms-app>
+  <app-cetamol-app *ngIf="'cetamol' == view"></app-cetamol-app>
 </div>

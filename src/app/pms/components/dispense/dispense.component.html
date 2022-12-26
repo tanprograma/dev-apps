@@ -1,0 +1,51 @@
+<div>
+  <form (ngSubmit)="createInputs(x)" #x="ngForm">
+    <input
+      (click)="toggleMessage()"
+      id="course"
+      list="medicines"
+      ngModel
+      name="name"
+      autocomplete="off"
+      placeholder="number of medicines"
+    />
+
+    <input type="submit" value="SUBMIT" />
+  </form>
+
+  <form
+    (ngSubmit)="onSubmit(f)"
+    #f="ngForm"
+    [ngStyle]="{ 'margin-top': '5px', 'margin-bottom': '5px' }"
+  >
+    <div class="ctrl" *ngFor="let ctrl of nofcontrols">
+      <input
+        (click)="toggleMessage()"
+        id="{{ ctrl.med }}"
+        list="medicines"
+        ngModel
+        name="{{ ctrl.med }}"
+        autocomplete="off"
+        placeholder="select medicine"
+      />
+      <datalist id="medicines">
+        <option *ngFor="let medicine of data.medicines">
+          {{ medicine.medicine }}
+        </option>
+      </datalist>
+
+      <input
+        (click)="toggleMessage()"
+        id="{{ ctrl.quant }}"
+        type="number"
+        ngModel
+        name="{{ ctrl.quant }}"
+        autocomplete="off"
+        placeholder="input quantity"
+      />
+    </div>
+
+    <input type="submit" value="DISPENSE" />
+  </form>
+  <h3 *ngIf="message">medicine added successfuly</h3>
+</div>

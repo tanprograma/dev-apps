@@ -1,0 +1,98 @@
+<div class="forms" *ngIf="!toggled">
+  <div
+    class="tandbs-btn"
+    *ngFor="let store of data.stores"
+    (click)="runToggled(store.store)"
+  >
+    {{ store.store }}
+  </div>
+</div>
+
+<div *ngIf="toggled">
+  <form (ngSubmit)="createInput()" ngForm>
+    <input type="submit" value="ADD ONE" />
+  </form>
+  <form (ngSubmit)="toggleMultiple()" ngForm>
+    <input type="submit" value="ADD MULTIPLE" />
+  </form>
+  <form *ngIf="multiple" (ngSubmit)="createInputs(x)" #x="ngForm">
+    <input
+      (click)="toggleMessage()"
+      id="course"
+      type="number"
+      ngModel
+      name="multiple"
+      autocomplete="off"
+      placeholder="number of medicines"
+    />
+
+    <input type="submit" value="ADD MULTIPLE" />
+  </form>
+
+  <form
+    (ngSubmit)="onSubmit(f)"
+    #f="ngForm"
+    [ngStyle]="{ 'margin-top': '5px', 'margin-bottom': '5px' }"
+  >
+    <div
+      class="ctrl"
+      [ngStyle]="{ 'background-color': 'grey', color: 'white' }"
+    >
+      <div *ngIf="props.voucher == 'dispense'">
+        <label for="client">CLIENT: </label>
+        <input
+          id="client"
+          type="text"
+          ngModel
+          name="client"
+          autocomplete="off"
+          placeholder="name or destination"
+        />
+      </div>
+      <div *ngIf="props.voucher !== 'dispense'">
+        <label for="client">CLIENT: </label>
+        <input
+          id="client"
+          list="clients"
+          ngModel
+          name="client"
+          autocomplete="off"
+          placeholder="name or destination"
+        />
+        <datalist id="clients">
+          <option *ngFor="let store of data.stores">{{ store.store }}</option>
+        </datalist>
+      </div>
+    </div>
+    <div class="ctrl" *ngFor="let ctrl of nofcontrols">
+      <input
+        (click)="toggleMessage()"
+        id="{{ ctrl.commodity }}"
+        list="medicines"
+        ngModel
+        name="{{ ctrl.commodity }}"
+        autocomplete="off"
+        placeholder="select medicine"
+      />
+      <datalist id="medicines">
+        <option *ngFor="let commodity of data.commodities">
+          {{ commodity.commodity }}
+        </option>
+      </datalist>
+
+      <input
+        (click)="toggleMessage()"
+        id="{{ ctrl.quantity }}"
+        type="number"
+        ngModel
+        name="{{ ctrl.quantity }}"
+        autocomplete="off"
+        placeholder="input quantity"
+      />
+    </div>
+
+    <input type="submit" value="{{ props.btnTitle }}" />
+  </form>
+  <h3 *ngIf="message">added successfuly</h3>
+</div>
+<button (click)="reset()">reset</button>

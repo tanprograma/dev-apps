@@ -1,0 +1,76 @@
+<div class="forms" *ngIf="pmsNotToggled">
+  <!-- <div class="heading">
+    <h4>select form</h4>
+  </div> -->
+  <div class="tandbs-btn" (click)="togglePms('commodity')">add commodities</div>
+  <div class="tandbs-btn" (click)="togglePms('store')">add stores</div>
+  <div class="tandbs-btn" (click)="togglePms('dispense')">dispense</div>
+  <div class="tandbs-btn" (click)="togglePms('transfer')">transfer</div>
+
+  <!-- <div class="tandbs-btn">
+    <div [ngStyle]="{ width: '100%' }">
+      <button (click)="toggleOrder('dispense')">dispense</button>
+      <button (click)="toggleOrder('transfer')">transfer</button>
+    </div>
+    <div [ngStyle]="{ width: '100%' }">
+      <form
+        *ngIf="isOrderView"
+        (ngSubmit)="callTogglePms(f, orderViewSelected)"
+        #f="ngForm"
+      >
+        <input
+          id="store"
+          list="stores"
+          name="store"
+          ngModel
+          placeholder="select store"
+        />
+        <datalist id="stores">
+          <option *ngFor="let store of data.stores">{{ store.store }}</option>
+        </datalist>
+        <input type="submit" value="SUBMIT" />
+      </form>
+    </div>
+  </div> -->
+  <div class="tandbs-btn" (click)="togglePms('transaction-record')">
+    transactions
+  </div>
+</div>
+<div class="add-commodity" *ngIf="view == 'commodity'">
+  <app-commodities></app-commodities>
+
+  <button (click)="resetToggle()">back</button>
+</div>
+<div class="add-store" *ngIf="view == 'store'">
+  <app-stores></app-stores>
+
+  <button (click)="resetToggle()">back</button>
+</div>
+
+<div class="add-dispense" *ngIf="view == 'dispense'">
+  <app-orders
+    [props]="{
+      btnTitle: 'DISPENSE',
+      host: host,
+      voucher: 'dispense'
+    }"
+  ></app-orders>
+
+  <button (click)="resetToggle()">back</button>
+</div>
+<div class="add-transfer" *ngIf="view == 'transfer'">
+  <app-orders
+    [props]="{
+      btnTitle: 'TRANSFER',
+      voucher: 'transfer'
+    }"
+  ></app-orders>
+
+  <button (click)="resetToggle()">back</button>
+</div>
+<!-- order views -->
+<div class="record-transaction" *ngIf="view == 'transaction-record'">
+  <app-transactions></app-transactions>
+
+  <button (click)="resetToggle()">back</button>
+</div>

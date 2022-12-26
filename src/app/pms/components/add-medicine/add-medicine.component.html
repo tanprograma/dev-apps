@@ -1,0 +1,89 @@
+<div>
+  <div class="products div">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <label for="course">product</label>
+      <br />
+      <input
+        (click)="toggleMessage()"
+        id="course"
+        list="medicines"
+        ngModel
+        name="name"
+        autocomplete="off"
+      />
+      <datalist id="medicines">
+        <option *ngFor="let medicine of data.medicines">
+          {{ medicine.medicine }}
+        </option>
+      </datalist>
+      <br />
+      <input type="submit" value="SUBMIT" />
+    </form>
+    <h3 *ngIf="message">MEDICINE added successfuly</h3>
+  </div>
+  <!-- working on units -->
+  <div class="units div">
+    <form (ngSubmit)="createInputs(x)" #x="ngForm">
+      <label for="nofunits">no:units</label>
+      <br />
+      <input
+        id="nofunits"
+        type="number"
+        ngModel
+        name="nofunits"
+        autocomplete="off"
+      />
+
+      <br />
+      <input type="submit" value="SUBMIT" />
+    </form>
+
+    <form (ngSubmit)="submit(f)" #f="ngForm">
+      <label for="prod">product</label>
+      <br />
+      <input
+        (click)="toggleMessage()"
+        id="prod"
+        list="medicines"
+        ngModel
+        name="medd"
+        autocomplete="off"
+        placeholder="select the medicine"
+      />
+      <datalist id="medicines">
+        <option *ngFor="let medicine of data.medicines">
+          {{ medicine.medicine }}
+        </option>
+      </datalist>
+      <br />
+      <div class="ctrl" *ngFor="let ctrl of nofunits">
+        <input
+          (click)="toggleMessage()"
+          id="{{ ctrl.unit }}"
+          list="units"
+          ngModel
+          name="{{ ctrl.med }}"
+          autocomplete="off"
+          placeholder="select medicine"
+        />
+        <datalist id="units">
+          <option *ngFor="let unit of data.units">
+            {{ unit.unit }}
+          </option>
+        </datalist>
+
+        <input
+          (click)="toggleMessage()"
+          id="{{ ctrl.quant }}"
+          type="number"
+          ngModel
+          name="{{ ctrl.quant }}"
+          autocomplete="off"
+          placeholder="input quantity"
+        />
+      </div>
+      <input type="submit" value="SUBMIT" />
+    </form>
+    <h3 *ngIf="message">UNITS added successfuly</h3>
+  </div>
+</div>

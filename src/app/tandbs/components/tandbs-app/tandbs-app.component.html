@@ -1,7 +1,22 @@
-<div class="add-topic">
-  <tandbs-add-topic></tandbs-add-topic>
+<div class="forms" *ngIf="tandbsNotToggled">
+  <!-- <div class="heading">
+    <h4>select form</h4>
+  </div> -->
+  <div class="tandbs-btn" (click)="toggleTandbs('topic')">add topic</div>
+  <div class="tandbs-btn" (click)="toggleTandbs('drug')">add drug</div>
+  <div class="tandbs-btn" (click)="toggleTandbs('question')">add topic</div>
 </div>
-<div>
+
+<div class="add-topic" *ngIf="view == 'topic'">
+  <tandbs-add-topic></tandbs-add-topic>
+  <button (click)="resetToggle()">back</button>
+</div>
+<div class="add-drug" *ngIf="view == 'drug'">
+  <app-tandbs-add-drug></app-tandbs-add-drug>
+  <button (click)="resetToggle()">back</button>
+</div>
+<div *ngIf="view == 'question'">
+  <button (click)="resetToggle()">back</button>
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <label for="topic">topic</label>
     <br />

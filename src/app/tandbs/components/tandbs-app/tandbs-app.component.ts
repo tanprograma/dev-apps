@@ -9,9 +9,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./tandbs-app.component.css'],
 })
 export class TandbsAppComponent implements OnInit {
+  tandbsNotToggled = true;
   topic?: any;
   format?: any;
   formatt: any = '';
+  view?: any;
 
   choices: any = [];
 
@@ -32,6 +34,14 @@ export class TandbsAppComponent implements OnInit {
       this.data.formats = formats;
       console.log(formats);
     });
+    this.http.get(this.urls.drgclass).subscribe((drgclasses) => {
+      this.data.drgclass = drgclasses;
+      console.log(drgclasses);
+    });
+    this.http.get(this.urls.drugs).subscribe((drugs) => {
+      this.data.drugs = drugs;
+      console.log(drugs);
+    });
   }
   onSubmit(f: NgForm) {
     this.topic = f.value.topic;
@@ -45,5 +55,13 @@ export class TandbsAppComponent implements OnInit {
       console.log(this.choices);
     }
     f.reset();
+  }
+  toggleTandbs(x: string) {
+    this.tandbsNotToggled = !this.tandbsNotToggled;
+    this.view = x;
+  }
+  resetToggle() {
+    this.tandbsNotToggled = !this.tandbsNotToggled;
+    this.view = '';
   }
 }

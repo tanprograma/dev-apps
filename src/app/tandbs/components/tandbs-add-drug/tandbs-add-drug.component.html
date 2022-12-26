@@ -1,0 +1,35 @@
+<div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <label for="clas">drug class</label>
+    <br />
+    <input
+      (click)="toggleMessage()"
+      id="clas"
+      list="class"
+      ngModel
+      name="clas"
+      autocomplete="off"
+      placeholder="select drug class"
+    />
+    <datalist id="class">
+      <option *ngFor="let class of data.drgclass">{{ class.class }}</option>
+    </datalist>
+
+    <br />
+    <label for="drug">drug</label>
+    <br />
+    <input
+      (click)="toggleMessage()"
+      id="drug"
+      type="text"
+      ngModel
+      name="drug"
+      autocomplete="off"
+      placeholder="enter a drug"
+    />
+
+    <br />
+    <input type="submit" value="SUBMIT" />
+  </form>
+  <h3 *ngIf="message">topic added successfully</h3>
+</div>

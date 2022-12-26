@@ -1,0 +1,22 @@
+<div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <label for="course">store</label>
+    <br />
+    <input
+      (click)="toggleMessage()"
+      id="course"
+      list="stores"
+      ngModel
+      name="name"
+      autocomplete="off"
+    />
+    <datalist id="stores">
+      <option *ngFor="let store of data.stores">
+        {{ store.store }}
+      </option>
+    </datalist>
+    <br />
+    <input type="submit" value="SUBMIT" />
+  </form>
+  <h3 *ngIf="message">topic added successfuly</h3>
+</div>
