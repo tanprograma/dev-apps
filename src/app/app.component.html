@@ -14,6 +14,7 @@
           <li (click)="toggleView('pms')">PMS</li>
           <li>XCELL</li>
           <li (click)="toggleView('cetamol')">CETAMOL</li>
+          <li (click)="toggleView('migrate')">MIGRATE</li>
         </ul>
       </nav>
     </div>
@@ -26,4 +27,5 @@
   <app-tandbs-app *ngIf="view1 == view"></app-tandbs-app>
   <app-pms-app *ngIf="view2 == view"></app-pms-app>
   <app-cetamol-app *ngIf="'cetamol' == view"></app-cetamol-app>
+  <app-migrate *ngIf="view4 == view"></app-migrate>
 </div>

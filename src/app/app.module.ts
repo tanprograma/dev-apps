@@ -23,6 +23,7 @@ import { CommoditiesComponent } from './cetamol/components/commodities/commoditi
 import { StoresComponent } from './cetamol/components/stores/stores.component';
 import { TransactionsComponent } from './cetamol/components/transactions/transactions.component';
 import { OrdersComponent } from './cetamol/components/orders/orders.component';
+import { MigrateComponent } from './migrate/migrate/migrate.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { OrdersComponent } from './cetamol/components/orders/orders.component';
     StoresComponent,
     TransactionsComponent,
     OrdersComponent,
+    MigrateComponent,
   ],
   imports: [BrowserModule, FontAwesomeModule, FormsModule, HttpClientModule],
   providers: [],
