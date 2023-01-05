@@ -1,0 +1,26 @@
+<div class="migrate">
+  <div class="nav">
+    <h2 (click)="migrateMedicines()">MIGRATE MEDICINES</h2>
+    <h2 (click)="migrateDispensed()">MIGRATE DISPENSED</h2>
+  </div>
+  <div class="view">
+    <table>
+      <thead *ngIf="selection == 'general'">
+        <tr>
+          <th>items</th>
+          <th>unmigrated</th>
+          <th>migrated</th>
+          <th>status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let migrate of migrates">
+          <th>{{ migrate.title }}</th>
+          <th>{{ migrate.unmigrated }}</th>
+          <th>{{ migrate.migrated }}</th>
+          <th>{{ migrate.status }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
